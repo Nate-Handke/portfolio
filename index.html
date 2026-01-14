@@ -11,10 +11,10 @@
        ART DIRECTION CONTROLS
        ===================================== */
     :root {
-      --bg: #d5d5d5;
-      --bg-soft: #4b1616;
-      --bg-dark: #1b1919;
-      --text: #c9c8c8;
+      --bg: #E6DFD9;
+      --bg-soft: #590111;
+      --bg-dark: #280106;
+      --text: #590111;
       --accent: #e63946;
 
       --filigree-opacity: 0.12;
@@ -71,23 +71,6 @@
       transform: scaleX(-1);
     }
 
-    /* =====================================
-       TOP FILIGREE (SEPARATE LAYER)
-       ===================================== */
-    .top-filigree {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 180px;
-      background-image: url("filigree-top.svg");
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: 80%;
-      opacity: var(--filigree-opacity);
-      pointer-events: none;
-      z-index: 0;
-    }
 
     /* =====================================
        HERO
@@ -267,9 +250,6 @@
     @media (max-width: 768px) {
       .page-frame::before,
       .page-frame::after,
-      .top-filigree {
-        display: none;
-      }
 
       .project {
         grid-template-columns: 1fr;
@@ -284,9 +264,6 @@
 </head>
 
 <body>
-
-  <!-- TOP ORNAMENT -->
-  <div class="top-filigree"></div>
 
   <div class="page-frame">
 

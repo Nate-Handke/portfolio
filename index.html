@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Trinity Esquivel — Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* =====================================
+       ART DIRECTION CONTROLS
+       ===================================== */
+    :root {
+      --bg: #d5d5d5;
+      --bg-soft: #4b1616;
+      --bg-dark: #1b1919;
+      --text: #c9c8c8;
+      --accent: #e63946;
+
+      --filigree-opacity: 0.12;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* =====================================
+       CONTENT CONTAINER
+       ===================================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* =====================================
+       PAGE FRAME (LEFT + RIGHT FILIGREE)
+       ===================================== */
+    .page-frame {
+      position: relative;
+    }
+
+    .page-frame::before,
+    .page-frame::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      width: 80px;
+      height: 100vh;
+      opacity: var(--filigree-opacity);
+      pointer-events: none;
+      background-repeat: repeat-y;
+      background-size: contain;
+      z-index: 0;
+    }
+
+    .page-frame::before {
+      left: 0;
+      background-image: url("filigree-left.svg");
+    }
+
+    .page-frame::after {
+      right: 0;
+      background-image: url("filigree-right.svg");
+      transform: scaleX(-1);
+    }
+
+    /* =====================================
+       TOP FILIGREE (SEPARATE LAYER)
+       ===================================== */
+    .top-filigree {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 180px;
+      background-image: url("filigree-top.svg");
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: 80%;
+      opacity: var(--filigree-opacity);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =====================================
+       HERO
+       ===================================== */
+    .hero {
+      min-height: 100vh;
+      padding: 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 10vw, 10rem);
+      line-height: 0.95;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 .meaning {
+      display: block;
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: -0.1em;
+    }
+
+    .hero h1 .spirit {
+      display: block;
+      font-style: italic;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-meta {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      max-width: 420px;
+    }
+
+    /* =====================================
+       ABOUT / PHILOSOPHY
+       ===================================== */
+    .about {
+      padding: 4rem 3rem;
+      background: var(--bg-soft);
+      position: relative;
+      z-index: 1;
+    }
+
+    .about p {
+      margin: 0;
+    }
+
+    .about-lead {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-emphasis {
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      opacity: 0.8;
+    }
+
+    /* =====================================
+       SELECTED WORK
+       ===================================== */
+    .work {
+      padding: 6rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .work h2 {
+      font-size: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 8rem;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .project-image {
+      width: 80%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: #cfcfcf;
+    }
+
+    .project-text h3 {
+      font-size: 1.8rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .project-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 420px;
+      margin: 0;
+    }
+
+    .project.reverse .project-image {
+      order: 2;
+    }
+
+    .project.reverse .project-text {
+      order: 1;
+    }
+
+    /* =====================================
+      ALL WORKS LINK
+      ===================================== */
+    .all-works-link {
+      padding: 3rem 3rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .all-works-link a {
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .all-works-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* =====================================
+       CONTACT
+       ===================================== */
+    .contact {
+      padding: 6rem 3rem 4rem;
+      font-size: 0.95rem;
+      background: var(--bg-dark);
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact p {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* =====================================
+       MOBILE
+       ===================================== */
+    @media (max-width: 768px) {
+      .page-frame::before,
+      .page-frame::after,
+      .top-filigree {
+        display: none;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+      }
+
+      .project.reverse .project-image,
+      .project.reverse .project-text {
+        order: unset;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP ORNAMENT -->
+  <div class="top-filigree"></div>
+
+  <div class="page-frame">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1>
+          <span class="meaning">MERRY CHRISTMAS<br>Welcome,</span>
+          <span class="spirit">to your Portfolio!!!</span>
+        </h1>
+
+        <div class="hero-meta">
+          Typography · Illustration · Visual Systems
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <div class="container">
+        <p class="about-lead">
+          Design is communication. Typography gives it tone, weight, and spirit.
+        </p>
+
+        <p class="about-text">
+          My work is rooted in typography-led design, illustration, and visual
+          systems. I’m interested in how words live in space — how scale,
+          rhythm, and structure shape meaning.
+        </p>
+
+        <p class="about-emphasis">
+          Every project begins with intention.
+        </p>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="work">
+      <div class="container">
+        <h2>Selected Work</h2>
+
+        <div class="projects">
+
+          <div class="project">
+            <img class="project-image" src="images/placeholder-project-01.jpg">
+            <div class="project-text">
+              <h3><a href="project-01.html">Project Title</a></h3>
+              <p>Short description of the project.</p>
+            </div>
+          </div>
+
+          <div class="project reverse">
+            <img class="project-image" src="images/placeholder-project-02.jpg">
+            <div class="project-text">
+              <h3><a href="project-02.html">Project Title</a></h3>
+              <p>Typography-led or illustrative work.</p>
+            </div>
+          </div>
+
+          <div class="project">
+            <img class="project-image" src="images/placeholder-project-03.jpg">
+            <div class="project-text">
+              <h3><a href="project-03.html">Project Title</a></h3>
+              <p>System-based design exploration.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="all-works-link">
+      <div class="container">
+        <a href="works.html">View All Works →</a>
+      </p>
+    </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact">
+      <div class="container">
+        <p>Trinity Esquivel</p>
+        <p><a href="mailto:trinityesquivel1@gmail.com">trinityesquivel1@gmail.com</a></p>
+        <p><a href="resume.pdf" target="_blank">View résumé</a></p>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

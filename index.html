@@ -15,9 +15,8 @@
       --bg-soft: #590111;
       --bg-dark: #280106;
       --text: #590111;
-      --accent: #e63946;
 
-      --filigree-opacity: 0.12;
+
     }
 
     * {
@@ -38,39 +37,6 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-
-    /* =====================================
-       PAGE FRAME (LEFT + RIGHT FILIGREE)
-       ===================================== */
-    .page-frame {
-      position: relative;
-    }
-
-    .page-frame::before,
-    .page-frame::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      width: 80px;
-      height: 100vh;
-      opacity: var(--filigree-opacity);
-      pointer-events: none;
-      background-repeat: repeat-y;
-      background-size: contain;
-      z-index: 0;
-    }
-
-    .page-frame::before {
-      left: 0;
-      background-image: url("filigree-left.svg");
-    }
-
-    .page-frame::after {
-      right: 0;
-      background-image: url("filigree-right.svg");
-      transform: scaleX(-1);
-    }
-
 
     /* =====================================
        HERO
@@ -271,12 +237,10 @@
     <section class="hero">
       <div class="container">
         <h1>
-          <span class="meaning">MERRY CHRISTMAS<br>Welcome,</span>
-          <span class="spirit">to your Portfolio!!!</span>
-        </h1>
+          <span class="meaning">Trinity E.
 
         <div class="hero-meta">
-          Typography · Illustration · Visual Systems
+          Typography · Illustration · Socials
         </div>
       </div>
     </section>
